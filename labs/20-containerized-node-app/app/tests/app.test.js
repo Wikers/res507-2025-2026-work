@@ -7,7 +7,7 @@ test("GET /health returns 200 and { ok: true }", async () => {
   try {
     const response = await app.inject({ method: "GET", url: "/health" });
 
-    assert.equal(response.statusCode, 201);
+    assert.equal(response.statusCode, 200);
     assert.deepEqual(response.json(), { ok: true });
   } finally {
     await app.close();
