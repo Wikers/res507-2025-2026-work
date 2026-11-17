@@ -15,8 +15,14 @@ spec:
     spec:
       containers:
       - name: quote-app
-        image: docker.io/library/quote-app:local
+        image: docker.io/library/quote-app:v2
         imagePullPolicy: Never
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: quote-db-secret
+              key: DATABASE_URL
         ports:
         - containerPort: 3000
         readinessProbe:
